@@ -14,7 +14,7 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      { path: '', component: DashboardComponent, data: { title: 'Dashboard' } },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
       { path: 'history', component: HistoryComponent, data: { title: 'History' } },
       { path: 'notifications', component: NotificationsComponent, data: { title: 'Notifications' } },
       { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },

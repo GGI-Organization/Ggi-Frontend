@@ -9,8 +9,6 @@ import { HistoryComponent } from './pages/history/history.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { PagesComponent } from './pages/pages.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
 
 
@@ -22,8 +20,6 @@ import { TutorialComponent } from './pages/tutorial/tutorial.component';
     NotificationsComponent,
     PagesComponent,
     ProfileComponent,
-    SideNavComponent,
-    ToolbarComponent,
     TutorialComponent
   ],
   imports: [

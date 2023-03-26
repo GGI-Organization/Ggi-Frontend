@@ -6,11 +6,11 @@ import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.compo
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'dashboard',
+    path: '',
     loadChildren: () => import('./ggi/ggi.module').then(m => m.GgiModule)
   },
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '404'
+    redirectTo: 'auth'
   }
 ];
 

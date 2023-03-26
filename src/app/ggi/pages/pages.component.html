@@ -1,2 +1,51 @@
-<p>pages works!</p>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+
+    <button mat-icon-button (click)="opened =! opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>Username</span>
+
+    <button mat-button>
+      Logout
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <mat-nav-list>
+      <mat-list-item [routerLink]="item.redirectTo" *ngFor="let item of menuItems">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <div matListItemTitle>{{ item.title }}</div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+      <!-- <a routerLink="profile" mat-list-item>
+         <mat-icon mat-list-icon>person</mat-icon>
+         Profile
+        </a>
+
+      <a routerLink="notifications" mat-list-item>
+        <mat-icon mat-list-icon>notifications</mat-icon>
+         Notifications
+      </a>
+
+      <a routerLink="tutorial" mat-list-item>
+        <mat-icon mat-list-icon>play_circle</mat-icon>
+         Tutorial
+        </a>
+
+        <a routerLink="history" mat-list-item>
+          <mat-icon mat-list-icon>history</mat-icon>
+          History
+        </a> -->
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
