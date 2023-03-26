@@ -3,23 +3,28 @@ import { CommonModule } from '@angular/common';
 
 import { GgiRoutingModule } from './ggi-routing.module';
 import { MaterialModule } from '../material/material.module';
-import { PagesComponent } from './pages/pages.component';
+
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { PagesComponent } from './pages/pages.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { TutorialComponent } from './pages/tutorial/tutorial.component';
 
 
 
 @NgModule({
   declarations: [
-    PagesComponent,
     DashboardComponent,
-    ProfileComponent,
+    HistoryComponent,
     NotificationsComponent,
-    TutorialComponent,
-    HistoryComponent
+    PagesComponent,
+    ProfileComponent,
+    SideNavComponent,
+    ToolbarComponent,
+    TutorialComponent
   ],
   imports: [
     CommonModule,

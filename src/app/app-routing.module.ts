@@ -6,7 +6,7 @@ import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.compo
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
