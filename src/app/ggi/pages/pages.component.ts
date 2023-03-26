@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
 
     mat-sidenav {
       width: 200px;
-      background-color: red;
     }
     `
   ]

@@ -16,18 +16,21 @@
 
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
-    Home
     <mat-nav-list>
-      <mat-list-item routerLink="dashboard" routerLink="dashboard">
+      <mat-list-item routerLink="dashboard">
         <mat-icon matListItemIcon>dashboard</mat-icon>
         <div matListItemTitle>Dashboard</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="profile">
+        <mat-icon matListItemIcon>person</mat-icon>
+        <div matListItemTitle>Profile</div>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="opened =! opened">Toggle</button>
-
+    <router-outlet></router-outlet>
       <!-- <a routerLink="profile" mat-list-item>
          <mat-icon mat-list-icon>person</mat-icon>
          Profile
