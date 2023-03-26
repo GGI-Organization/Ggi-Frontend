@@ -6,14 +6,20 @@ import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.compo
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-    loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./ggi/ggi.module').then(m => m.GgiModule)
+  },
+  {
+    path: '404',
+    component: NoPageFoundComponent
   },
   {
     path: '**',
-    component: NoPageFoundComponent
+    redirectTo: '404'
   }
 ];
 

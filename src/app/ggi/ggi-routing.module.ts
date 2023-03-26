@@ -11,7 +11,7 @@ import { TutorialComponent } from "./pages/tutorial/tutorial.component";
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: PagesComponent,
     children: [
       { path: '', component: DashboardComponent, data: { title: 'Dashboard' } },
