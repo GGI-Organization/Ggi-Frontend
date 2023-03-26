@@ -17,14 +17,9 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" mode="side">
     <mat-nav-list>
-      <mat-list-item routerLink="dashboard">
-        <mat-icon matListItemIcon>dashboard</mat-icon>
-        <div matListItemTitle>Dashboard</div>
-      </mat-list-item>
-
-      <mat-list-item routerLink="profile">
-        <mat-icon matListItemIcon>person</mat-icon>
-        <div matListItemTitle>Profile</div>
+      <mat-list-item [routerLink]="item.redirectTo" *ngFor="let item of menuItems">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <div matListItemTitle>{{ item.title }}</div>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>

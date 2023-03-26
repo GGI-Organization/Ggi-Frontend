@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-pages',
@@ -15,6 +17,13 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit {
   opened = false;
+  menuItems: any[] = [];
+
+  constructor( private sidebarService: SidebarService ) {}
+
+  ngOnInit(): void {
+    this.menuItems = this.sidebarService.menu;
+  }
 }
