@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="container-login">
+    <div class="container-left">
+        <div class="container-form">
+            <h3 class="title">Iniciar Sesión</h3>
+            <p>Bienvenido a GGI una plataforma que te ayuda generar interfaces en simples pasos.</p>
+            <form (submit)="onSubmit()" class="login-form">
+                <mat-form-field class="input">
+                    <mat-label>Correo</mat-label>
+                    <input matInput
+                        type="email"
+                        value="">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password"
+                        matInput
+                        value="">
+                </mat-form-field>
+                <button class="button-login"
+                    type="submit"
+                    mat-raised-button
+                    color="primary">Ingresar</button>
+                <button (click)="handleRegister()" class="button-register"
+                    type="button"
+                    mat-raised-button
+                    color="primary">Registrar</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-right">
+
+    </div>
+</div>

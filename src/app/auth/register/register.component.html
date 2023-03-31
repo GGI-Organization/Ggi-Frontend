@@ -1,1 +1,49 @@
-<p>register works!</p>
+<div class="container-register">
+    <div class="container-left">
+        <div class="container-form">
+            <h3 class="title">Nueva Cuenta</h3>
+            <form (submit)="onSubmit()" class="register-form">
+                <mat-form-field class="input">
+                    <mat-label>Nombre Completo</mat-label>
+                    <input matInput
+                        type="text"
+                        required="true"
+                        value="">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <mat-label>Correo</mat-label>
+                    <input matInput
+                        type="email"
+                        required="true"
+                        value="">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password"
+                        matInput
+                        required="true"
+                        value="">
+                </mat-form-field>
+                <mat-form-field class="input">
+                    <mat-label>Repetir Contraseña</mat-label>
+                    <input type="password"
+                        matInput
+                        required="true"
+                        value="">
+                </mat-form-field>
+                <button class="button-register"
+                    type="submit"
+                    mat-raised-button
+                    color="primary">Registrarse</button>
+                <button class="button-cancel"
+                    type="button"
+                    (click)="handleLogin()"
+                    mat-raised-button
+                    color="primary">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <div class="container-right">
+
+    </div>
+</div>

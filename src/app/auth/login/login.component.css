@@ -1,0 +1,56 @@
+.container-login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    width: 100%;
+}
+
+.container-left {
+    display: flex;
+    flex: 1;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-form {
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 14px;
+}
+
+.container-right {
+    display: flex;
+    flex: 2;
+    background: url('https://c1.wallpaperflare.com/preview/640/831/586/layout-sketch-ux-web-design-thumbnail.jpg');
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .container-right {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .container-right {
+        flex: 1;
+    }
+}
