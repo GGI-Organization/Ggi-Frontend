@@ -10,6 +10,9 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { PagesComponent } from './pages/pages.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
+import { UploadMockupsComponent } from './pages/upload-mockups/upload-mockups.component';
+import { GeneratorComponent } from './pages/generator/generator.component';
+import { UploadBpmnComponent } from './pages/upload-bpmn/upload-bpmn.component';
 
 
 
@@ -20,7 +23,10 @@ import { TutorialComponent } from './pages/tutorial/tutorial.component';
     NotificationsComponent,
     PagesComponent,
     ProfileComponent,
-    TutorialComponent
+    TutorialComponent,
+    UploadMockupsComponent,
+    GeneratorComponent,
+    UploadBpmnComponent
   ],
   imports: [
     CommonModule,

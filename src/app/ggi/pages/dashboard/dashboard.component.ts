@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styles: [
+  `
+  `
   ]
 })
 export class DashboardComponent {

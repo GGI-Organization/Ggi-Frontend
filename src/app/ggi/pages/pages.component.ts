@@ -8,17 +8,25 @@ import { SidebarService } from '../services/sidebar.service';
   styles: [
     `
     mat-sidenav-container {
-      height: calc(205vh - 115vh);
+      height: 100vh;
     }
 
     mat-sidenav {
       width: 200px;
     }
+
+    .sidenav-header {
+      margin: 22px 0 20px 16px;
+    }
+    h1 {
+      color: black;
+      font-size: 32px;
+      font-weight: bold;
+    }
     `
   ]
 })
 export class PagesComponent implements OnInit {
-  opened = false;
   menuItems: any[] = [];
 
   constructor( private sidebarService: SidebarService ) {}

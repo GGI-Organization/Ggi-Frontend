@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Ajusta la altura del contenedor como desees */
+  margin-top: 75px;
+}
+
+.row {
+  width: 100%;
+  text-align: center;
+  height: 20%;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 26px;
+  font-weight: regular;
+}
+
+button {
+  width: 650px;
+  height: 110px !important;
+  font-size: 38px;
+  font-weight: bold;
+}
