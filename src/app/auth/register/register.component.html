@@ -32,14 +32,20 @@
                         value="">
                 </mat-form-field>
                 <button class="button-register"
-                    type="submit"
-                    mat-raised-button
-                    color="primary">Registrarse</button>
+                        type="submit"
+                        mat-raised-button
+                        routerLink="/"
+                        color="primary">
+                        Registrarse
+                </button>
                 <button class="button-cancel"
-                    type="button"
-                    (click)="handleLogin()"
-                    mat-raised-button
-                    color="primary">Cancelar</button>
+                        type="button"
+                        (click)="handleLogin()"
+                        routerLink="/auth/login"
+                        mat-raised-button
+                        color="primary">
+                        Iniciar Sesión
+                </button>
             </form>
         </div>
     </div>

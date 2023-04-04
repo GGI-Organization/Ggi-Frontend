@@ -8,21 +8,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  public loginValid: boolean = true;
-  public email: string = '';
-  public password: string = '';
+  loginValid: boolean = true;
+  email: string = '';
+  password: string = '';
 
-  constructor(private _rotue: ActivatedRoute, private _router: Router){
-
+  constructor(private _router: Router) {
   }
 
   public onSubmit(): void{
     console.log('login', this.email, this.password)
     this.email = ''
     this.password = ''
+    this._router.navigateByUrl('/');
   }
 
-  public handleRegister(): void{
+  public handleRegister() {
     this._router.navigateByUrl('/auth/register');
   }
 
