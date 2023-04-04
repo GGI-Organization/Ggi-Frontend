@@ -27,6 +27,7 @@ import { SidebarService } from '../services/sidebar.service';
   ]
 })
 export class PagesComponent implements OnInit {
+  opened: boolean = false;
   menuItems: any[] = [];
 
   constructor( private sidebarService: SidebarService ) {}
