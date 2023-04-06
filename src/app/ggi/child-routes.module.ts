@@ -11,10 +11,6 @@ import { UploadBpmnComponent } from "./pages/upload-bpmn/upload-bpmn.component";
 import { UploadMockupsComponent } from './pages/upload-mockups/upload-mockups.component';
 
 const childRoutes: Routes = [
-  { path: 'history', component: HistoryComponent, data: { title: 'History' } },
-  { path: 'notifications', component: NotificationsComponent, data: { title: 'Notifications' } },
-  { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
-  { path: 'tutorial', component: TutorialComponent, data: { title: 'Tutorial' } },
   {
     path: '',
     component: DashboardComponent,
@@ -22,8 +18,13 @@ const childRoutes: Routes = [
       { path: 'dashboard', component: UploadBpmnComponent, data: { title: 'Upload BPMN'} },
       { path: 'upload-mockups', component: UploadMockupsComponent, data: { title: 'Upload Mockups'} },
       { path: 'generator', component: GeneratorComponent, data: { title: 'Generator' } },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
      ]
-  }
+  },
+  { path: 'history', component: HistoryComponent, data: { title: 'History' } },
+  { path: 'notifications', component: NotificationsComponent, data: { title: 'Notifications' } },
+  { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
+  { path: 'tutorial', component: TutorialComponent, data: { title: 'Tutorial' } }
 ];
 
 @NgModule({
