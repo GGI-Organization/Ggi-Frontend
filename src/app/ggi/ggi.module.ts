@@ -32,6 +32,17 @@ import { UploadBpmnComponent } from './pages/upload-bpmn/upload-bpmn.component';
     CommonModule,
     GgiRoutingModule,
     MaterialModule
+  ],
+  exports: [
+    DashboardComponent,
+    HistoryComponent,
+    NotificationsComponent,
+    PagesComponent,
+    ProfileComponent,
+    TutorialComponent,
+    UploadMockupsComponent,
+    GeneratorComponent,
+    UploadBpmnComponent
   ]
 })
 export class GgiModule { }

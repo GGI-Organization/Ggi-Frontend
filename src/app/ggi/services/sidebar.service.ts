@@ -9,7 +9,7 @@ export class SidebarService {
     {
       title: 'Dashboard',
       icon: 'dashboard',
-      redirectTo: 'dashboard'
+      redirectTo: '/dashboard'
     },
     {
       title: 'Profile',

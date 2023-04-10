@@ -1,30 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { GgiRoutingModule } from './ggi/ggi-routing.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+
 import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.component';
 
-// Pages
-
 const routes: Routes = [
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
-  {
-    path: '',
-    loadChildren: () => import('./ggi/ggi.module').then(m => m.GgiModule)
-  },
-  {
-    path: '404',
-    component: NoPageFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: 'auth'
-  }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '**', component: NoPageFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    GgiRoutingModule,
+    AuthRoutingModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
