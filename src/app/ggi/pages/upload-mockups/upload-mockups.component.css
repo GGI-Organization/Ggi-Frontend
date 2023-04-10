@@ -6,6 +6,7 @@
   gap: 10px;
   margin-top: 75px;
   width: min(90%, 120rem);
+  height: calc(100vh - 150px);
   margin: 0 auto 40px auto;
   padding: 15px;
 }
@@ -15,6 +16,7 @@
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
+  flex: 1;
 }
 
 .item:last-child {
