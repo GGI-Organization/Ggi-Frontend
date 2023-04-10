@@ -1,4 +1,41 @@
+/*** Layout ***/
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto repeat(3, 1fr) auto;
+  gap: 10px;
+  height: 50vh;
+  margin-top: 75px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.sub-item {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightblue;
+  /* height: 100%; */
+}
+
+/*** Global Styles ***/
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
 h2 {
   font-size: 40px;
   font-weight: bold;
+}
+
+p {
+  font-size: 26px;
+  font-weight: regular;
 }
