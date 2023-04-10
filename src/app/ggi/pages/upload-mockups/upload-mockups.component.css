@@ -4,15 +4,21 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto repeat(3, 1fr) auto;
   gap: 10px;
-  height: 50vh;
   margin-top: 75px;
+  width: min(90%, 120rem);
+  margin: 0 auto 40px auto;
+  padding: 15px;
 }
 
 .item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   justify-content: space-between;
+}
+
+.item:last-child {
+  flex-direction: row;
 }
 
 .sub-item {
@@ -20,22 +26,35 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   background-color: lightblue;
-  /* height: 100%; */
+}
+
+.sub-item > * {
+  flex-basis: 40%;
+}
+
+.sub-item > :last-child {
+  flex-basis: 20%;
 }
 
 /*** Global Styles ***/
-h1 {
-  font-size: 48px;
-  font-weight: bold;
-}
-
 h2 {
   font-size: 40px;
   font-weight: bold;
 }
 
+h3 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 p {
   font-size: 26px;
-  font-weight: regular;
+  font-weight: normal;
+}
+
+.sub-item p {
+  font-size: 20px;
+  font-weight: bold;
 }
