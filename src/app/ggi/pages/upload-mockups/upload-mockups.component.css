@@ -14,9 +14,7 @@
 .item {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: space-between;
-  flex: 1;
+  align-items: center;
 }
 
 .item:last-child {
@@ -27,9 +25,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
   text-align: center;
-  background-color: lightblue;
 }
 
 .sub-item > * {
