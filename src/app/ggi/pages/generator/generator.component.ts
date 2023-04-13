@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./generator.component.css']
 })
 export class GeneratorComponent {
-
+  checked = false;
 }

@@ -1,29 +1,72 @@
-<h2 style="text-align: center; margin: 40px 0 45px 0;">Step 2: Upload your mockups images</h2>
+<h2 class="title">Step 2: Upload your mockups images</h2>
 
 <mat-card class="container">
-  <div class="item">
-    <p class="sub-item">From your BPMN diagram we have detected different tasks that
-      are related to web development, please upload the mockups
-      related to the corresponding tasks.
-    </p>
-  </div>
-  <div class="item">
-    <div class="sub-item">
-      <h3>Tasks Detected</h3>
-      <h3>Mockups</h3>
-      <h3>Tools</h3>
-    </div>
-    <div class="sub-item">
-      <p>Task 1</p>
-      <button mat-raised-button color="primary">Upload Mockup 1</button>
+    <h4 class="subtitle">From your BPMN diagram we have detected different tasks that are related to web development, please upload the mockups related to the corresponding tasks.
+    </h4>
+  <table mat-table [dataSource]="dataSource" class="table-mockups">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Tasks Detected </th>
+    <td mat-cell *matCellDef="let element"> {{element.task}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Mockups </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-raised-button color="primary">{{element.mockup}}</button> 
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Tools </th>
+    <td mat-cell *matCellDef="let element"> 
       <mat-icon aria-hidden="false"
-                aria-label="Delete task"
-                fontIcon="delete">
-      </mat-icon>
-    </div>
+              aria-label="Delete task"
+              fontIcon="delete">
+    </mat-icon> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div class="list-option">
+  <div class="item-option">
+    <button mat-raised-button color="primary"><mat-icon>arrow_back</mat-icon> Regresar</button> 
   </div>
-  <div class="item">
-    <div class="sub-item"><button mat-raised-button color="primary">BACK</button></div>
-    <div class="sub-item"><button mat-raised-button color="primary">NEXT</button></div>
+  <div class="item-option">
+    <button mat-raised-button color="primary">Agregar</button> 
   </div>
+  <div class="item-option">
+    <button mat-raised-button color="primary">Siguiente <mat-icon iconPositionEnd>arrow_forward</mat-icon></button> 
+  </div>
+</div>
+ 
 </mat-card>
+
+
+<!-- <div class="item">
+  <div class="sub-item">
+    <h3>Tasks Detected</h3>
+    <h3>Mockups</h3>
+    <h3>Tools</h3>
+  </div>
+  <div class="sub-item">
+    <p>Task 1</p>
+    <button mat-raised-button color="primary">Upload Mockup 1</button>
+    <mat-icon aria-hidden="false"
+              aria-label="Delete task"
+              fontIcon="delete">
+    </mat-icon>
+  </div>
+</div>
+<div class="item">
+  <div class="sub-item"><button mat-raised-button color="primary">BACK</button></div>
+  <div class="sub-item"><button mat-raised-button color="primary">NEXT</button></div>
+</div> -->
