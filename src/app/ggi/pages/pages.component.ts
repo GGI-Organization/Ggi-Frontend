@@ -5,26 +5,7 @@ import { SidebarService } from '../services/sidebar.service';
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styles: [
-    `
-    mat-sidenav-container {
-      height: 100vh;
-    }
-
-    mat-sidenav {
-      width: 200px;
-    }
-
-    .sidenav-header {
-      margin: 22px 0 20px 16px;
-    }
-    h1 {
-      color: black;
-      font-size: 32px;
-      font-weight: bold;
-    }
-    `
-  ]
+  styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
   opened: boolean = true;

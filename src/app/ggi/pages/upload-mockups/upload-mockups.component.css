@@ -1,43 +1,5 @@
 /*** Layout ***/
 
-.title {
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  margin: 30px 0;
-}
-
-.subtitle {
-  font-size: 20px;
-  font-weight: 400;
-  text-align: justify;
-  margin: 0 0 10px 0;
-}
-
-.container {
-  padding: 20px;
-  margin: 0 20px 20px 20px;
-  min-height: 80vh;
-  border-radius: 5px;
-  min-width: 100% - 30px;
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto repeat(3, 1fr) auto;
-  gap: 10px;
-  margin-top: 75px;
-  width: min(90%, 120rem);
-  height: calc(100vh - 150px);
-  margin: 0 auto 40px auto;
-  padding: 15px; */
-}
-
 td, th {
   border-bottom: none !important;
-  text-align: center;
-}
-
-.list-option {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
 }

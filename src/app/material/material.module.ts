@@ -10,6 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     MatToolbarModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

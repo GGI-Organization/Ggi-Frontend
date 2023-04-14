@@ -1,1 +1,82 @@
-<p>tutorial works!</p>
+<div class="container">
+    <h1 class="headline5">Tutorial</h1>
+    <div class="card">
+        <p class="body1">En esta seccion le mostraremos un video corto para generar tu codigo fuente con la
+            ayuda de tu diagrmaa BPMN y Mockups.</p>
+        <br />
+        <div class="row center">
+            <video controls loop>
+                <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm">
+                <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+            </video>
+        </div>
+        <br />
+        <p class="body1"> Antes de poder realizar cualquier comando para iniciar tu proyecto debe tener instalado <a
+                href="https://nodejs.org/en">Node.Js</a> validando colocando en su aplicacion de comando </p>
+        <code>node -v</code>
+        <p class="body1">Luego de tenerlo instalado puede seguir los siguientes pasos dependiendo que tipo de tecnologia esta
+            desarrollada su aplicación.
+        </p>
+        <br/>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="body1">¿Como levantar un proyecto en <b>Angular</b>?</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p class="body1">1. Preparando el ambiente</p>
+                <p class="body1">Primero instalemos Angular-Cli, ejecutamos:</p>
+                <code> npm install -g @angular/cli </code>
+                <p class="body1">Esto instalará globalmente la herramienta angular-cli. Si todo salio bien, el comando “ng -v” nos
+                    mostrara las versiones instaladas: </p>
+                <code> ng -v</code>
+                <p class="body1">2. Abrir el proyecto creado</p>
+                <p class="body1">Vamos al directorio en el que creamos el proyecto:</p>
+                <code>cd nombre-del-proyecto</code>
+                <p class="body1">3. Ejecutar la aplicación</p>
+                <p class="body1">Para ver la aplicaicon en el navegador ejecutamos:</p>
+                <code>ng serve --open</code>
+                <p class="body1">Usando la opción — open (o simplemente -o) nos abrirá automáticamente la aplicación en el navegador
+                    en “http: // localhost: 4200 /”</p>
+            </mat-expansion-panel>
+            <br>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="body1">¿Como levantar un proyecto en <b>React</b>?</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p class="body1">1. Abrir el proyecto creado</p>
+                <p class="body1">Vamos al directorio en el que creamos el proyecto:</p>
+                <code>cd nombre-del-proyecto</code>
+                <p class="body1">2. Ejecutar la aplicación</p>
+                <p class="body1">Para ver la aplicaicon en el navegador ejecutamos:</p>
+                <code>npm start</code>
+                <p class="body1">Se levantar la pagina web en tu navegador predeterminado</p>
+            </mat-expansion-panel>
+            <br>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="body1">¿Como iniciar rapido un proyecto en <b>VueJs</b>?</p>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p class="body1">1. Preparando el ambiente</p>
+                <p class="body1">Primero instalemos Vue-Cli, ejecutamos:</p>
+                <code> npm install -g @vue/cli </code>
+                <p class="body1">Esto instalará globalmente la herramienta angular-cli. Si todo salio bien, el comando “vue -v” nos
+                    mostrara las versiones instaladas: </p>
+                <code> vu -v</code>
+                <p class="body1">2. Abrir el proyecto creado</p>
+                <p class="body1">Vamos al directorio en el que creamos el proyecto:</p>
+                <code>cd nombre-del-proyecto</code>
+                <p class="body1">3. Ejecutar la aplicación</p>
+                <p class="body1">Para ver la aplicaicon en el navegador ejecutamos:</p>
+                <code>ng run serve</code>
+                <p class="body1">Una vez hemos hecho esto, tendremos arrancado un servidor de desarrollo en nuestro equipo para ver el
+                    proyecto en un navegador a medida que modificamos el código.</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
