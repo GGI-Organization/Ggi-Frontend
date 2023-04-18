@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,22 +9,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  loginValid: boolean = true;
-  email: string = '';
-  password: string = '';
+  loginForm: FormGroup = this.fb.group({
+    email: [ '', [ Validators.required, Validators.email ]],
+    password: [ '', Validators.required ]
+  });
 
-  constructor(private _router: Router) {
+  constructor( private router: Router,
+               private fb: FormBuilder ) {
   }
 
-  public onSubmit(): void{
-    console.log('login', this.email, this.password)
-    this.email = ''
-    this.password = ''
-    this._router.navigateByUrl('/');
+  fieldNotValid(field: string) {
+    return this.loginForm.controls[field].errors &&
+           this.loginForm.controls[field].touched;
   }
 
-  public handleRegister() {
-    this._router.navigateByUrl('/auth/register');
+  login() {
+    if (this.loginForm.invalid) return;
+    // TODO: this.userService.login( this.loginForm.value )
+    console.log('Login... ', this.loginForm.value);
+    this.router.navigateByUrl('/dashboard');
   }
 
 }
