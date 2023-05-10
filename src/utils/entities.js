@@ -1,8 +1,8 @@
 export class LoginRes {
   constructor(response) {
-    const { id, username, email, roles, token } = response
+    const { id, fullname, email, roles, token } = response
     this.id = id
-    this.username = username
+    this.fullname = fullname
     this.email = email
     this.roles = roles
     this.token = token

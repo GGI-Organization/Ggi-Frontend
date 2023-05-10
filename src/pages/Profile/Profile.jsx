@@ -1,16 +1,39 @@
 import { Box, Button, Card, CardContent, Divider, Icon, Paper, TextField, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { alertMessage } from '../../utils/functions'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import apiUser from '../../services/apiUser';
+import LoadingDialog from '../../components/Dialog/LoadingDialog';
+import { useAuthContext } from '../../context/AuthContext';
 
 
-function Profile() {
+const Profile = () => {
+
+  const [showLoading, setShowLoading] = useState(false)
+  const { login } = useAuthContext()
+
+  const id = localStorage.getItem('id')
+
+  const callAPI = async () => {
+    const response = await apiUser.getById({ id })
+    if (response.error) {
+      return
+    }
+    const { fullname, email } = response.result
+    formik.setValues({ fullname, email, password: '' })
+  }
+
+  useEffect(() => {
+    callAPI()
+  }, [])
+
 
   const formik = useFormik({
     initialValues: {
-      fullname: '',
-      email: '',
+      fullname: localStorage.getItem('fullname') ?? '',
+      email: localStorage.getItem('email') ?? '',
       password: '',
     },
     validationSchema: Yup.object({
@@ -32,24 +55,24 @@ function Profile() {
       const errors = {}
       return errors
     },
-    onSubmit: async (values, { resetForm }) => {
-      // setShowError(false)
-      // const response = await apiAuth.register({ email: values.email, password: values.password, fullname: values.fullname })
-      // if (response.error) {
-      //   setShowError(true)
-      //   return false
-      // } else {
-      //   resetForm()
-      //   alertMessage({ icon: 'success', message: 'Cuenta registrada correctamente', title: 'Listo!' })
-      //   setInterval(() => {
-      //     navigate('/login')
-      //   }, 3000);
-      // }
+    onSubmit: async (values) => {
+      setShowLoading(true)
+      const { fullname, email, password } = values
+      const response = await apiUser.update({ id, fullname, email, password })
+      if (response.error) {
+        alertMessage({ icon: 'error', message: response.message, title: 'Oh no!' })
+      } else {
+        login(response.result)
+        alertMessage({ icon: 'success', message: 'Información actualizada exitosamente', title: 'Listo!' })
+      }
+      setShowLoading(false)
+      return false
     }
   });
 
   return (
     <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <LoadingDialog open={showLoading} /> 
       <Box>
         <Box display='flex' justifyContent='center'>
           <AccountCircleOutlinedIcon sx={{ width: '200px', height: '200px' }} />

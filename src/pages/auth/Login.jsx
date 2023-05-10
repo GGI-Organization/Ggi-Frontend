@@ -46,6 +46,9 @@ const Login = () => {
         return false
       }
       const loginRes = new LoginRes(response.result)
+      localStorage.setItem('id', loginRes.id.toString())
+      localStorage.setItem('fullname', loginRes.fullname)
+      localStorage.setItem('email', loginRes.email)
       login(loginRes.token)
       navigate('/app')
     }
