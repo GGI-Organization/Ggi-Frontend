@@ -1,7 +1,7 @@
 import globals from "../utils/globals";
 
-const ROOT = "http://localhost:8080/api/"
-// const ROOT = "https://serviceapp-production.up.railway.app/api/v1/"
+// const ROOT = "http://localhost:8080/api/"
+const ROOT = "https://ggi-backend-production.up.railway.app/api/"
 
 
 export default {

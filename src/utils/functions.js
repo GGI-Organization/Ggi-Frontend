@@ -206,7 +206,7 @@ const createRouteReactFile = (pages) => {
 // CREATE REACT ZIP 
 export const generateReactZip = (mockups) => {
   const headers = { Authorization: `Bearer ${globals.token}` }
-  fetch('http://localhost:8080/api/flow-processor/react-zip', { headers })
+  fetch('https://ggi-backend-production.up.railway.app/api/flow-processor/react-zip', { headers })
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => {
       return JSZip.loadAsync(arrayBuffer);

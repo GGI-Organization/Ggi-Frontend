@@ -6,14 +6,10 @@ import DefaultIconButton from '../../components/Button/DefaultIconButton'
 import DefaultTable from '../../components/Table/DefaultTable'
 import apiMockup from '../../services/apiMockup'
 import apiDiagram from '../../services/apiDiagram'
+import DiagramDetailDialog from '../../components/Dialog/DiagramDetailDialog'
+import MockupDetailDialog from '../../components/Dialog/MockupDetailDialog'
 
 const headers = ['Nombre', 'Tipo', 'Fecha de creación', '']
-const example = [
-  { id: 1, name: 'BPMN pruebas 1', type: 'BPMN', created_date: '01/01/2021' },
-  { id: 2, name: 'BPMN pruebas 1', type: 'BPMN', created_date: '01/01/2021' },
-  { id: 3, name: 'BPMN pruebas 1', type: 'BPMN', created_date: '01/01/2021' },
-  { id: 4, name: 'BPMN pruebas 1', type: 'BPMN', created_date: '01/01/2021' },
-]
 
 const typesFile = { ALL: 'ALL', MOCKUP: 'MOCKUP', DIAGRAM: 'DIAGRAM' }
 
@@ -23,6 +19,10 @@ function History() {
   const [typeFile, setTypeFile] = useState(typesFile.ALL)
   const [name, setName] = useState('')
   const [data, setData] = useState([])
+  const [showDiagramDetail, setShowDiagramDetail] = useState(false)
+  const [showMockupDetail, setShowMockupDetail] = useState(false)
+  const [mockupDetail, setMockupDetail] = useState([])
+  const [diagramDetail, setDiagramDetail] = useState({tasks: [], path: ''})
 
 
   const apiContent = useCallback(
@@ -44,6 +44,19 @@ function History() {
         mockups = responseMockup.result.content.map((item) => ({ id: item.id, name: item.name, date: item.updatedAt, type: 'Mockup', mockups: item.mockups }))
       }
       const infoHistory = [].concat(diagramas, mockups)
+      infoHistory.sort((a, b) => {
+        const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+      
+        // names must be equal
+        return 0;
+      });
       setData(infoHistory)
     }, [name, typeFile])
 
@@ -64,7 +77,15 @@ function History() {
         <CustomCell><Typography variant="h6" fontWeight="bold">{date}</Typography></CustomCell>
         <CustomCell>
           <DefaultIconButton
-            onClick={() => { }} icon='delete' />
+            onClick={() => {
+              if (type == 'Diagrama BPMN'){
+                setDiagramDetail({imgSrc: `http://localhost:8080/images/${row.path}/bpmn.png`, tasks: row.tasks})
+                setShowDiagramDetail(true)
+              }else{
+                setMockupDetail(row.mockups)
+                setShowMockupDetail(true)
+              }
+             }} icon='detail' />
         </CustomCell>
       </TableRow>
     )
@@ -72,6 +93,8 @@ function History() {
 
   return (
     <Box sx={{ width: '100%' }}>
+      <MockupDetailDialog open={showMockupDetail} handleClose={() => setShowMockupDetail(false)} data={mockupDetail}  />
+      <DiagramDetailDialog open={showDiagramDetail} handleClose={() => setShowDiagramDetail(false)} data={diagramDetail} />
       <Header title='Historial' />
       <Grid container spacing={2}>
         <Grid item md={5.5} sm={5.25} xs={12}>

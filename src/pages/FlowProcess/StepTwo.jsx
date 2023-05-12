@@ -53,9 +53,7 @@ const StepTwo = ({ setStep }) => {
 
   const saveMockupImage = (e) => {
     const file = e.target.files[0]
-    console.log('id => ', e.target, idRequest)
     const newMockups = mockups.map((item) => {
-      console.log('id => ', item.id, idRequest)
       if (item.id == idRequest) {
         item.mockup = file
         item.uri = URL.createObjectURL(file)
@@ -106,8 +104,6 @@ const StepTwo = ({ setStep }) => {
     setShowLoading(true)
     const images = mockups.map((item) => item.mockup)
     const tasks = mockups.map((item) => ({ task: item.task, type: item.type, keyWord: item.keyWord }))
-    console.log('images => ', images)
-    console.log('tasks => ', JSON.stringify({tasks}))
     const response = await apiFlowProcessor.mockupsComponents({ files: images, tasks: JSON.stringify({ tasks }) })
     if (response.error === true){
       setShowLoading(false)

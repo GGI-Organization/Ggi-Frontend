@@ -13,7 +13,7 @@ const ImagePreview = ({ open = false, handleClose, imgSrc = '' }) => {
     >
       <Box sx={{ backgroundColor: colors.primary[400], p: '20px', borderRadius: '5px', gap: 1, display: 'flex', flexDirection: 'column', width: { sm: '100% !important', md: '700px !important' } }}>
         <Typography variant="h5" fontWeight='bold'>
-          Image de Vista Previa
+          Imagen de Vista Previa
         </Typography>
         <img
           src={imgSrc}
