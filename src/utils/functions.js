@@ -129,7 +129,7 @@ const generateReactAllPages = (pages) => {
     
     const ${countPage[index]} = () => {
       return(
-        <div> 
+        <div style={{position: 'relative'}}> 
     `;
 
     let indexOption = 1

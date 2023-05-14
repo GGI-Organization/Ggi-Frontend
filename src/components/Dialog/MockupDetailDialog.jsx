@@ -59,7 +59,7 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
                     <img
                       key={i}
                       style={{ width: '100%', height: 'auto' }}
-                      src={`http://localhost:8080/images/${item.path}`}
+                      src={`https://ggi-backend-production.up.railway.app/images/${item.path}`}
                       alt="image-preview"
                       loading="lazy"
                     />
