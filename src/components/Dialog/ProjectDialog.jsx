@@ -7,7 +7,7 @@ function ProjectDialog({ open = false, handleClose, handAccept }) {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Nombre del proyecto de BPMN y Mockups</DialogTitle>
+      <DialogTitle>Nombre del proyecto de BPMN y Wireframes</DialogTitle>
       <DialogContent>
         <TextField
           autoFocus

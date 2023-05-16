@@ -41,7 +41,7 @@ function History() {
         if (responseMockup.error) {
           return;
         }
-        mockups = responseMockup.result.content.map((item) => ({ id: item.id, name: item.name, date: item.updatedAt, type: 'Mockup', mockups: item.mockups }))
+        mockups = responseMockup.result.content.map((item) => ({ id: item.id, name: item.name, date: item.updatedAt, type: 'Wireframe', mockups: item.mockups }))
       }
       const infoHistory = [].concat(diagramas, mockups)
       infoHistory.sort((a, b) => {
@@ -112,7 +112,7 @@ function History() {
           >
             <MenuItem value={typesFile.ALL}>Todos</MenuItem>
             <MenuItem value={typesFile.DIAGRAM}>BPMN</MenuItem>
-            <MenuItem value={typesFile.MOCKUP}>Mockup</MenuItem>
+            <MenuItem value={typesFile.MOCKUP}>Wireframes</MenuItem>
           </Select>
         </Grid>
         <Grid item md={1} sm={1.5} xs={12}>

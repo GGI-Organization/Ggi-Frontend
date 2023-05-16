@@ -18,7 +18,7 @@ function Tutorial() {
     <Box sx={{ width: '100%' }}>
       <Header title='Tutorial' />
       <Box>
-        <Typography variant='body1'>En esta seccion le mostraremos un video corto para generar tu codigo fuente con la ayuda de tu diagrmaa BPMN y Mockups.</Typography>
+        <Typography variant='body1'>En esta seccion le mostraremos un video corto para generar tu codigo fuente con la ayuda de tu diagrmaa BPMN y Wireframes.</Typography>
         <br />
         <Box display='flex' flexDirection='row' justifyContent='center'>
           <video controls style={{width: '100%', maxHeight: '400px'}}>

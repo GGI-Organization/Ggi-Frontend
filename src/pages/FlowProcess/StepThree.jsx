@@ -65,9 +65,9 @@ const StepThree = () => {
     }}>
       <LoadingDialog open={showLoading} /> 
       <ProjectDialog open={showNameRequest} handAccept={saveNameProject} handleClose={() => { setShowNameRequest(false) }} />
-      <Typography variant="h1" fontWeight='bold'>PASO 3: Elije la tecnologia</Typography>
-      <Typography variant="h3">Ya estas muy cerca en obtener tu pagina web, solo falta que selecciones en que tecnologia lo quieres.</Typography>
-      <Typography variant="h2" fontWeight='bold'>Tecnologias</Typography>
+      <Typography variant="h1" fontWeight='bold'>PASO 3 de 3: Elija la tecnología</Typography>
+      <Typography variant="h3">Ya estás muy cerca en obtener tu página web, solo falta que selecciones en que tecnología lo quieres.</Typography>
+      <Typography variant="h2" fontWeight='bold'>Tecnologías</Typography>
       <Stack direction='row' gap={10} flexWrap='wrap' justifyContent='space-evenly'>
         <Stack alignItems='center'>
           <img src="../assets/react.png" width={100} height={100} />

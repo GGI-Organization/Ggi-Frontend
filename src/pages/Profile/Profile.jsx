@@ -85,7 +85,7 @@ const Profile = () => {
             </Box>
             <Box sx={{ width: '1px', backgroundColor: 'black' }} />
             <Box display='flex' flexDirection='column' alignItems='center'>
-              <Typography variant='h5' fontWeight='bold'>Mockup Subidos</Typography>
+              <Typography variant='h5' fontWeight='bold'>Wireframes Subidos</Typography>
               <Typography variant='h3' fontWeight='bold'>10</Typography>
             </Box>
           </Box>

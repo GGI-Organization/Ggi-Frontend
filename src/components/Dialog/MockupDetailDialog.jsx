@@ -20,7 +20,7 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
     })
     return (
       <>
-        <Divider sx={{mb: 1}} />
+        <Divider sx={{ mb: 1 }} />
         <Typography variant='h4'>Components detectados: </Typography>
         {countComponents.map((item, index) => (
           <Typography variant='h5' fontWeight='bold' key={index}>* {item}</Typography>
@@ -37,7 +37,7 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
     >
       <Box sx={{ backgroundColor: colors.primary[400], p: '20px', borderRadius: '5px', gap: 1, display: 'flex', flexDirection: 'column', width: { xs: '100% !important', md: '700px !important' } }}>
         <Typography variant="h5" fontWeight='bold'>
-          Mockups Subidos
+          Wireframes Subidos
         </Typography>
         <Box>
           <Carousel
@@ -53,9 +53,9 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
           >
             {
               data.map((item, i) => (
-                <Stack sx={{height: '100%'}} key={item.id} flexDirection='column' alignItems='center' display='flex'>
+                <Stack sx={{ height: '100%' }} key={item.id} flexDirection='column' alignItems='center' display='flex'>
                   <Typography mb={1} variant='h5' fontWeight='bold'>{item.task}</Typography>
-                  <Box sx={{display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <img
                       key={i}
                       style={{ width: '100%', height: 'auto' }}

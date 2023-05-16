@@ -71,7 +71,7 @@ const Sidebar = ({ onMobileClose, openMobile }) => {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%", }}>
       <Box sx={{ alignItems: "center", display: "flex", flexDirection: "column", m: '20px 0' }}>
         <Typography fontWeight="bold" variant="h4">
-          GGI
+          GIG
         </Typography>
       </Box>
       <Box sx={{ p: 0 }}>

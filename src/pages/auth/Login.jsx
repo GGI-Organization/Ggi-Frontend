@@ -65,7 +65,7 @@ const Login = () => {
           Iniciar Sesión
         </Typography>
         <Typography variant='h5' color={colors.grey[100]}>
-          Bienvenido a GGI una plataforma que te ayuda generar interfaces en simples pasos.
+          Bienvenido a GIG una plataforma que te ayuda generar interfaces en simples pasos.
         </Typography>
       </Box>
       {

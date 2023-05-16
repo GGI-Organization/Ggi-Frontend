@@ -56,9 +56,9 @@ const StepOne = ({ setStep }) => {
     }}>
       <LoadingDialog open={showLoading} /> 
       <input ref={fileRef} onChange={getBPMNImage} hidden type="file" accept=".jpg,.jpeg,.png" />
-      <Typography variant="h1" fontWeight='bold'>Generador de Interfaces Graficas</Typography>
-      <Typography variant="h3">Convierte tu diagrama BPMN junto a tus mockups en una interfaz grafica</Typography>
-      <Typography variant="h1" fontWeight='bold'>PASO 1: Sube tu imagen BPMN</Typography>
+      <Typography variant="h1" fontWeight='bold'>Generador de Interfaces Gráficas</Typography>
+      <Typography variant="h3">Convierte tu diagrama BPMN junto a tus wireframes en una interfaz gráfica</Typography>
+      <Typography variant="h1" fontWeight='bold'>PASO 1 de 3: Sube tu imagen BPMN</Typography>
       <Button
         // color='primary'
         style={{ background: colors.greenAccent[600] }}

@@ -127,25 +127,25 @@ const StepTwo = ({ setStep }) => {
       <NewTaskDialog open={showTask} handleClose={() => setShowTask(false)} addTask={addTask} />
       <ImagePreview open={showImg} handleClose={() => setShowImg(false)} imgSrc={imagePreview} />
       <input ref={fileRef} onChange={saveMockupImage} hidden type="file" accept=".jpg,.jpeg,.png" />
-      <Typography align="center" variant="h1" fontWeight='bold'>PASO 2: Sube tus imagenes de mockup</Typography>
+      <Typography align="center" variant="h1" fontWeight='bold'>PASO 2 de 3: Sube tus imágenes de wireframes</Typography>
       <Card>
         <CardContent>
           <Snackbar open={showLimitTask} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowLimitTask(false)}>
             <Alert onClose={() => setShowLimitTask(false)} severity="error" sx={{ width: '100%', mt: 7 }}>
-              El maximo de tareas a procesar es de <strong>8 tareas</strong>.
+              El maximo de tareas a procesar es de <strong>8 tareas.</strong>.
             </Alert>
           </Snackbar>
           <Snackbar open={showEmptyTask} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowEmptyTask(false)}>
             <Alert onClose={() => setShowEmptyTask(false)} severity="info" sx={{ width: '100%', mt: 7 }}>
-              Debe tener por lo menos una tarea registrada
+              Debe tener por lo menos una tarea registrada.
             </Alert>
           </Snackbar>
           <Snackbar open={showRequiredImg} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowRequiredImg(false)}>
             <Alert onClose={() => setShowRequiredImg(false)} severity="info" sx={{ width: '100%', mt: 7 }}>
-              Debe subir todas las <strong>imagenes de los mockups</strong>.
+              Debe subir todas las <strong>imágenes de los wireframes</strong>.
             </Alert>
           </Snackbar>
-          <Typography align="justify" variant="body1">De tu diagrama BPMN hemos detectado diferente tareas que están relacionado al desarrollo web, por favor sube los mockups relacionado a las tareas correspondientes.</Typography>
+          <Typography align="justify" variant="body1">De tu diagrama BPMN hemos detectado diferentes tareas que están relacionados con el desarrollo web, por favor sube los wireframes relacionado con las tareas correspondientes.</Typography>
           <br />
           <TableContainer>
             <Table sx={{ minWidth: 'auto' }} aria-label="simple table">
@@ -155,7 +155,7 @@ const StepTwo = ({ setStep }) => {
                     <Typography fontWeight='bold' variant="h5">Tareas Detectadas</Typography>
                   </TableCell>
                   <TableCell style={styleCell} align="center">
-                    <Typography fontWeight='bold' variant="h5">Mockups</Typography>
+                    <Typography fontWeight='bold' variant="h5">Wireframes</Typography>
                   </TableCell>
                   <TableCell style={styleCell} align="center"></TableCell>
                 </TableRow>
@@ -174,13 +174,13 @@ const StepTwo = ({ setStep }) => {
                     <TableCell style={styleCell} align="center">
                       <Stack spacing={1}>
                         <Button onClick={() => requesMockupImage(row.id)} variant="contained">
-                          <Typography variant="h6">Subir Mockup</Typography>
+                          <Typography variant="h6">Subir Wireframe</Typography>
                         </Button>
                         {
                           row.uri != '' &&
                           (
                             <Button onClick={() => handleImagePreview(row.uri)} variant="contained">
-                              <Typography variant="h6">Mostrar Mockup</Typography>
+                              <Typography variant="h6">Mostrar Wireframe</Typography>
                             </Button>
                           )
                         }
