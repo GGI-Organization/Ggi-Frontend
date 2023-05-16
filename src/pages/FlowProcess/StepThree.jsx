@@ -49,8 +49,9 @@ const StepThree = () => {
   const handTect = () => {
     if (!isSavedInfo) {
       setShowNameRequest(true)
+    }else{
+      generateCodeZip()
     }
-    generateCodeZip()
   }
 
   return (
