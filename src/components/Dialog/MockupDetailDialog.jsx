@@ -3,8 +3,6 @@ import { tokens } from '../../theme';
 import Carousel from 'react-material-ui-carousel'
 import React, { useState } from 'react'
 
-const items = [{ image: 'https://balsamiq.com/assets/wireframes/boogle-large.jpg' }, { image: 'https://balsamiq.com/assets/wireframes/boogle-large.jpg' }, { image: 'https://balsamiq.com/assets/wireframes/boogle-large.jpg' }]
-
 const MockupDetailDialog = ({ open = false, handleClose, data }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -59,7 +57,7 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
                     <img
                       key={i}
                       style={{ width: '100%', height: 'auto' }}
-                      src={`https://ggi-backend-production.up.railway.app/images/${item.path}`}
+                      src={`https://storage.googleapis.com/ggi_bucket/${item.path}`}
                       alt="image-preview"
                       loading="lazy"
                     />

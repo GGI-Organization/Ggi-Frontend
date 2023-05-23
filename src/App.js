@@ -4,7 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import PublicRoute from './components/Route/PublicRoute';
 import PrivateRoute from './components/Route/PrivateRoute';
 
-import { APP, DASHBOARD, HISTORY, LOGIN, NOTIFICATION, PROFILE, REGISTER, TUTORIAL } from './config/routes/path';
+import { APP, DASHBOARD, HISTORY, LOGIN, NOTIFICATION, POLITY, PROFILE, REGISTER, TUTORIAL } from './config/routes/path';
 
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register';
@@ -16,6 +16,7 @@ import Tutorial from './pages/Tutorial/Tutorial';
 
 import { ColorModeContext, useMode } from './theme'
 import { AuthContextProvider } from './context/AuthContext';
+import PolityPrivacy from './pages/auth/PolityPrivacy';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
                 <Route index element={<Login />} />
                 <Route path={LOGIN} element={<Login />} />
                 <Route path={REGISTER} element={<Register />} />
+              </Route>
+              <Route path='/polity' element={<PolityPrivacy />}>
               </Route>
               <Route path={APP} element={<PrivateRoute />}>
                 <Route index element={<Dashboard />} />

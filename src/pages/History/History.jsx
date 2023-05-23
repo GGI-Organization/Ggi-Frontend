@@ -79,7 +79,7 @@ function History() {
           <DefaultIconButton
             onClick={() => {
               if (type == 'Diagrama BPMN'){
-                setDiagramDetail({imgSrc: `https://ggi-backend-production.up.railway.app/images/${row.path}/bpmn.png`, tasks: row.tasks})
+                setDiagramDetail({imgSrc: `https://storage.googleapis.com/ggi_bucket/${row.path}-bpmn.png`, tasks: row.tasks})
                 setShowDiagramDetail(true)
               }else{
                 setMockupDetail(row.mockups)
