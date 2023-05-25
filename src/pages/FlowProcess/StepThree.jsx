@@ -1,7 +1,7 @@
 import { Box, Button, Radio, Stack, Typography, useTheme } from "@mui/material";
 import { useContext, useState } from "react";
 import { tokens } from "../../theme";
-import { alertMessage, generateReactZip } from "../../utils/functions";
+import { alertMessage, generateReactZip, generateVueZip } from "../../utils/functions";
 import { FlowContext } from "./Dashboard";
 import ProjectDialog from "../../components/Dialog/ProjectDialog";
 import apiFlowProcessor from "../../services/apiFlowProcessor";
@@ -34,23 +34,34 @@ const StepThree = () => {
   const saveNameProject = async (name) => {
     setShowLoading(true)
     const response = await apiFlowProcessor.saveProject({ name, pathDiagramBPMN: data.pathDiagramBPMN, pathMockupGroup: data.pathMockupGroup })
-    if (response.error === true){
+    if (response.error === true) {
       setShowLoading(false)
       setShowNameRequest(false)
-      alertMessage({icon: 'error', message: 'Ocurrio un error en los servicios, por favor intentelo nuevamente.', title: 'Oh no'})
+      alertMessage({ icon: 'error', message: 'Ocurrio un error en los servicios, por favor intentelo nuevamente.', title: 'Oh no' })
       return
     }
     setShowLoading(false)
     setShowNameRequest(false)
     setIsSavedInfo(true)
-    generateCodeZip()
+    getProjectZip()
+  }
+
+  const getProjectZip = () => {
+    switch (tec) {
+      case technologies.REACT:
+        generateCodeZip()
+        break;
+      case technologies.VUE:
+        generateVueZip()
+        break;
+    }
   }
 
   const handTect = () => {
     if (!isSavedInfo) {
       setShowNameRequest(true)
-    }else{
-      generateCodeZip()
+    } else {
+      getProjectZip()
     }
   }
 
@@ -64,7 +75,7 @@ const StepThree = () => {
       flex: 1,
       textAlign: 'center'
     }}>
-      <LoadingDialog open={showLoading} /> 
+      <LoadingDialog open={showLoading} />
       <ProjectDialog open={showNameRequest} handAccept={saveNameProject} handleClose={() => { setShowNameRequest(false) }} />
       <Typography variant="h1" fontWeight='bold'>PASO 3 de 3: Elija la tecnología</Typography>
       <Typography variant="h3">Ya estás muy cerca en obtener tu página web, solo falta que selecciones en que tecnología lo quieres.</Typography>
@@ -80,7 +91,7 @@ const StepThree = () => {
             inputProps={{ 'aria-label': 'A' }}
           />
         </Stack>
-        <Stack alignItems='center'>
+        {/* <Stack alignItems='center'>
           <img src="../assets/angular.png" width={100} height={100} />
           <Radio
             checked={tec === technologies.ANGULAR}
@@ -89,7 +100,7 @@ const StepThree = () => {
             name="radio-buttons"
             inputProps={{ 'aria-label': 'A' }}
           />
-        </Stack>
+        </Stack> */}
         <Stack alignItems='center'>
           <img src="../assets/vue.png" width={100} height={100} />
           <Radio
