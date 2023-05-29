@@ -21,9 +21,7 @@ function Tutorial() {
         <Typography variant='body1'>En esta seccion le mostraremos un video corto para generar tu codigo fuente con la ayuda de tu diagrmaa BPMN y Wireframes.</Typography>
         <br />
         <Box display='flex' flexDirection='row' justifyContent='center'>
-          <video controls style={{width: '100%', maxHeight: '400px'}}>
-            <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
-          </video>
+          <iframe  width="100%" height="500" src="https://www.youtube.com/embed/eVX-KJJlK_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </Box>
         <br />
         <Typography>
