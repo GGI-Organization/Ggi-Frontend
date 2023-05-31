@@ -240,3 +240,173 @@ export const generateReactZip = (mockups) => {
       linkDescarga.click();
     });
 }
+
+// VUE CODE SOURCE
+// const countPage = ['PageOne', 'PageTwo', 'PageThree', 'PageFour', 'PageFive', 'PageSix', 'PageSeven', 'PageEight']
+// Step One
+const generateIndexVuePage = (pages) => {
+  // page = {components: [], task : {task : "tarea 1","type" : "create","keyWord" : "registrar"}}
+  let mainApp = `
+  import { createRouter, createWebHistory } from 'vue-router'
+  `
+
+  let index = 0
+  for (const page of pages) {
+    mainApp += `import ${countPage[index]} from './views/${countPage[index]}.vue';\n`;
+    index++
+  }
+
+  mainApp += `
+
+  const router = createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [ 
+    `;
+
+  index = 0
+  for (const page of pages) {
+    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    if (index == 0) {
+      mainApp += `
+      {
+        path: "/",
+        name: "${path}",
+        element: ${countPage[index]}
+      },
+      {
+        path: "/${path}",
+        name: "${path}",
+        element: ${countPage[index]}
+      },
+      `;
+    } else {
+      mainApp += `
+      {
+        path: "/${path}",
+        name: "${path}",
+        element: ${countPage[index]}
+      },
+      `;
+    }
+    index++
+  }
+
+  mainApp += `
+    ]
+    })
+
+    export default router
+  `
+  return mainApp
+  // index.js
+  // const src = zip.folder('src')
+  // pages.file(`index.js`, mainApp)
+}
+// Step Two
+const generateVueAllPages = (pages) => {
+  let index = 0
+  const templatePages = []
+  for (const page of pages) {
+    let newPage = `
+    <script setup>
+    import BlockText from '../components/BlockText.vue'
+    import ButtonC from '../components/Button.vue'
+    import CheckboxC from '../components/Checkbox.vue'
+    import Input from '../components/Input.vue'
+    import Label from '../components/Label.vue'
+    import SelectC from '../components/SelectC.vue'
+    import InputSearch from '../components/InputSearch.vue'
+    import TableC from '../components/TableC.vue'
+    </script>
+    
+    <template>
+      <main style="position: relative;">
+    `;
+
+    let indexOption = 1
+    for (const component of page.components) {
+      switch (component.type) {
+        case typeCom.BLOCK_TEXT:
+          const length = parseInt((component.width / 10) * (component.height / 20))
+          const blockText = `<BlockText width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} label="${lorem.substring(0, length)}" />\n`
+          newPage += blockText
+          break
+        case typeCom.BUTTON:
+          const button = `<ButtonC width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += button
+          break
+        case typeCom.CHECKBOX:
+          const checkbox = `<CheckboxC width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} label='Opcion ${indexOption}' />\n`
+          indexOption++
+          newPage += checkbox
+          break
+        case typeCom.INPUT:
+          const input = `<Input width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += input
+          break
+        case typeCom.INPUT_SEARCH:
+          const inputSearch = `<InputSearch width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += inputSearch
+          break
+        case typeCom.LABEL:
+          const label = `<Label width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += label
+          break
+        case typeCom.SELECT:
+          const select = `<SelectC width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += select
+          break
+        case typeCom.TABLE:
+          const table = `<TableC width={${component.width}} height={${component.height}} positionX={${component.posX}} positionY={${component.posY}} />\n`
+          newPage += table
+          break
+        default:
+          break
+      }
+    }
+    newPage += `
+        </main>
+    </template>
+    `
+    index++
+    templatePages.push(newPage)
+  }
+  return templatePages
+  // pages
+  // const pages = zip.folder('src/pages')
+  // pages.file(`page-one(task).jsx`, templatePage)
+}
+// Step three
+// CREATE VUE ZIP 
+export const generateVueZip = (mockups) => {
+  const headers = { Authorization: `Bearer ${globals.token}` }
+  fetch('https://ggi-backend.azurewebsites.net/api/flow-processor/vue-zip', { headers })
+    // fetch('http://localhost:8080/api/flow-processor/vue-zip', { headers })
+    .then(response => response.arrayBuffer())
+    .then(arrayBuffer => {
+      return JSZip.loadAsync(arrayBuffer);
+    })
+    .then(zip => {
+      // index.js
+      const src = zip.folder('src/router')
+      const indexJSX = generateIndexVuePage(mockups)
+      src.file('index.js', indexJSX)
+      // pages
+      const pages = zip.folder('src/views')
+      let i = 0
+      const pagesTemplate = generateVueAllPages(mockups)
+      for (const page of pagesTemplate) {
+        pages.file(`${countPage[i]}.vue`, page)
+        i++
+      }
+      return zip.generateAsync({ type: 'blob', compression: 'DEFLATE' });
+    })
+    .then(function (contenidoZip) {
+      // Descarga del archivo zip actualizado
+      const linkDescarga = document.createElement('a');
+      linkDescarga.href = URL.createObjectURL(contenidoZip);
+      const date = dayjs().format('DD-MM')
+      linkDescarga.download = `vue-project-${date}.zip`;
+      linkDescarga.click();
+    });
+}
