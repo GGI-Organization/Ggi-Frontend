@@ -36,7 +36,7 @@ const MockupDetailDialog = ({ open = false, handleClose, data }) => {
       <Box sx={{ backgroundColor: colors.primary[400], p: '20px', borderRadius: '5px', gap: 1, display: 'flex', flexDirection: 'column', width: { xs: '100% !important', md: '700px !important' } }}>
         <Typography variant="h5" fontWeight='bold'>
           Wireframes Subidos
-        </Typography>
+        </Typography>        
         <Box>
           <Carousel
             autoPlay={false}

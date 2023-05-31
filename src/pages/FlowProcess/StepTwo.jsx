@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Box, Button, Card, CardContent, Container, Grid, IconButton, Snackbar, Stack, Typography, useTheme } from "@mui/material"
+import { Alert, AlertTitle, Box, Button, Card, CardContent, Container, Grid, IconButton, Snackbar, Stack, TextField, Typography, useTheme } from "@mui/material"
 import Table from '@mui/material/Table';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TableBody from '@mui/material/TableBody';
@@ -18,6 +18,7 @@ import NewTaskDialog from "../../components/Dialog/NewTaskDialog";
 import { alertMessage, guid } from "../../utils/functions";
 import apiFlowProcessor from "../../services/apiFlowProcessor";
 import LoadingDialog from "../../components/Dialog/LoadingDialog";
+import WirefrimeInfoDialog from "../../components/Dialog/WirefrimeInfoDialog";
 
 
 const StepTwo = ({ setStep }) => {
@@ -31,11 +32,12 @@ const StepTwo = ({ setStep }) => {
   const [showImg, setShowImg] = useState(false)
   const [imagePreview, setImagePreview] = useState('')
   const [showTask, setShowTask] = useState(false)
-  const [showRequiredImg, setShowRequiredImg] = useState(true)
-  const [showLimitTask, setShowLimitTask] = useState(true)
+  const [showRequiredImg, setShowRequiredImg] = useState(false)
+  const [showLimitTask, setShowLimitTask] = useState(false)
   const [showLoading, setShowLoading] = useState(false)
   const [showEmptyTask, setShowEmptyTask] = useState(false)
-
+  const [showNameEmptyTask, setShowNameEmptyTask] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
   // initial task from step one
   useEffect(() => {
     const initData = () => {
@@ -72,13 +74,17 @@ const StepTwo = ({ setStep }) => {
   }
 
   // Add new task
-  const addTask = (value) => {
-    if (value.trim() === '') {
-      setShowTask(false)
+  const addTask = (value = '') => {
+    // if (value.trim() === '') {
+    //   setShowTask(false)
+    //   return
+    // }
+    if (mockups.length === 8) {
+      setShowLimitTask(true)
       return
     }
-    setMockups(pre => [...pre, { task: value.trim(), uri: '', mockup: null, id: guid(), tyep: '', keyWord: '' }])
-    setShowTask(false)
+    setMockups(pre => [...pre, { task: '', uri: '', mockup: null, id: guid(), tyep: '', keyWord: '' }])
+    // setShowTask(false)
   }
 
   // Delete task
@@ -101,18 +107,33 @@ const StepTwo = ({ setStep }) => {
       setShowRequiredImg(true)
       return
     }
+    if (mockups.some((item) => item.task.trim() === '')) {
+      setShowNameEmptyTask(true)
+      return
+    }
     setShowLoading(true)
     const images = mockups.map((item) => item.mockup)
     const tasks = mockups.map((item) => ({ task: item.task, type: item.type, keyWord: item.keyWord }))
     const response = await apiFlowProcessor.mockupsComponents({ files: images, tasks: JSON.stringify({ tasks }) })
-    if (response.error === true){
+    if (response.error === true) {
       setShowLoading(false)
-      alertMessage({icon: 'error', message: 'Ocurrio un error en los servicios, por favor intentelo nuevamente.', title: 'Oh no'})
+      alertMessage({ icon: 'error', message: 'Ocurrio un error en los servicios, por favor intentelo nuevamente.', title: 'Oh no' })
       return
     }
     setShowLoading(false)
-    updateData({...data, mockups: response.result.mockups, pathMockupGroup: response.result.path})
+    updateData({ ...data, mockups: response.result.mockups, pathMockupGroup: response.result.path })
     setStep('three')
+  }
+
+  const handleChangeTask = (id, value) => {
+    let copyMockups = mockups
+    copyMockups = copyMockups.map((item) => {
+      if (item.id == id) {
+        item.task = value
+      }
+      return item
+    })
+    setMockups([...copyMockups])
   }
 
   const styleCell = { borderBottom: 0 }
@@ -124,7 +145,8 @@ const StepTwo = ({ setStep }) => {
       flex: 1
     }}>
       <LoadingDialog open={showLoading} />
-      <NewTaskDialog open={showTask} handleClose={() => setShowTask(false)} addTask={addTask} />
+      <WirefrimeInfoDialog open={showInfo} handleClose={() => setShowInfo(false)} />
+      {/* <NewTaskDialog open={showTask} handleClose={() => setShowTask(false)} addTask={addTask} /> */}
       <ImagePreview open={showImg} handleClose={() => setShowImg(false)} imgSrc={imagePreview} />
       <input ref={fileRef} onChange={saveMockupImage} hidden type="file" accept=".jpg,.jpeg,.png" />
       <Typography align="center" variant="h1" fontWeight='bold'>PASO 2 de 3: Sube tus imágenes de wireframes</Typography>
@@ -133,6 +155,11 @@ const StepTwo = ({ setStep }) => {
           <Snackbar open={showLimitTask} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowLimitTask(false)}>
             <Alert onClose={() => setShowLimitTask(false)} severity="error" sx={{ width: '100%', mt: 7 }}>
               El maximo de tareas a procesar es de <strong>8 tareas.</strong>.
+            </Alert>
+          </Snackbar>
+          <Snackbar open={showNameEmptyTask} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowLimitTask(false)}>
+            <Alert onClose={() => setShowNameEmptyTask(false)} severity="error" sx={{ width: '100%', mt: 7 }}>
+              Todas las <strong>tareas</strong> tienen que tener su nombre.
             </Alert>
           </Snackbar>
           <Snackbar open={showEmptyTask} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={() => setShowEmptyTask(false)}>
@@ -145,7 +172,8 @@ const StepTwo = ({ setStep }) => {
               Debe subir todas las <strong>imágenes de los wireframes</strong>.
             </Alert>
           </Snackbar>
-          <Typography align="justify" variant="body1">De tu diagrama BPMN hemos detectado diferentes tareas que están relacionados con el desarrollo web, por favor sube los wireframes relacionado con las tareas correspondientes.</Typography>
+          <Typography align="justify" variant="h5">De tu diagrama BPMN hemos detectado diferentes tareas que están relacionados con el desarrollo web, por favor sube los wireframes relacionado con las tareas correspondientes.</Typography>
+          <Typography variant="h5">Para ver los componentes entrenados para generar pagina web haga click <a href="#" onClick={() => setShowInfo(true)} style={{ cursor: 'pointer', fontWeight: 'bold', textDecorationLine:'none', color: 'black' }}>aqui</a></Typography>
           <br />
           <TableContainer>
             <Table sx={{ minWidth: 'auto' }} aria-label="simple table">
@@ -167,9 +195,10 @@ const StepTwo = ({ setStep }) => {
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
                     <TableCell style={styleCell} align="center">
-                      <Typography variant="body1" fontWeight='bold'>
+                      <TextField value={row.task} onChange={(e) => handleChangeTask(row.id, e.target.value)} id={row.id} variant="outlined" />
+                      {/* <Typography variant="body1" fontWeight='bold'>
                         {row.task.trim()}
-                      </Typography>
+                      </Typography> */}
                     </TableCell>
                     <TableCell style={styleCell} align="center">
                       <Stack spacing={1}>
@@ -206,7 +235,7 @@ const StepTwo = ({ setStep }) => {
             <Button onClick={() => setStep('one')} variant="contained" startIcon={<ChevronLeftOutlinedIcon />} sx={{ textTransform: 'none' }}>
               <Typography variant="h6">Regresar</Typography>
             </Button>
-            <Button variant="contained" onClick={() => setShowTask(true)} startIcon={<AddOutlinedIcon />} sx={{ textTransform: 'none' }}>
+            <Button variant="contained" onClick={() => addTask()} startIcon={<AddOutlinedIcon />} sx={{ textTransform: 'none' }}>
               <Typography variant="h6">Agregar</Typography>
             </Button>
             <Button variant="contained" onClick={processMockups} endIcon={<ChevronRightOutlinedIcon />} sx={{ textTransform: 'none' }}>
