@@ -206,7 +206,7 @@ const createRouteReactFile = (pages) => {
 // CREATE REACT ZIP 
 export const generateReactZip = (mockups) => {
   const headers = { Authorization: `Bearer ${globals.token}` }
-  fetch('https://ggi-backend.azurewebsites.net/api/flow-processor/react-zip', { headers })
+  fetch('https://ggi-backend-production.up.railway.app/api/flow-processor/react-zip', { headers })
   // fetch('http://localhost:8080/api/flow-processor/react-zip', { headers })
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => {
@@ -380,7 +380,7 @@ const generateVueAllPages = (pages) => {
 // CREATE VUE ZIP 
 export const generateVueZip = (mockups) => {
   const headers = { Authorization: `Bearer ${globals.token}` }
-  fetch('https://ggi-backend.azurewebsites.net/api/flow-processor/vue-zip', { headers })
+  fetch('https://ggi-backend-production.up.railway.app/api/flow-processor/vue-zip', { headers })
     // fetch('http://localhost:8080/api/flow-processor/vue-zip', { headers })
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => {
