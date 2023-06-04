@@ -693,9 +693,9 @@ const getAngularHTML = (page) => {
   `
   return newPage
 }
-const getAngularComponent = (page, index) => {
+const getAngularComponent = (mockup, index) => {
   let page = ``
-  let components = page.components
+  let components = mockup.components
   if (components.some(e => e.type === typeCom.TABLE)) {
     page =
       `
