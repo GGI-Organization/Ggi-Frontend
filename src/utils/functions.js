@@ -50,7 +50,7 @@ const generateIndexReactPage = (pages) => {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
-  import Layout from './pages/Layout';
+  import LayoutDrawer from './pages/LayoutDrawer';
   `
 
   let index = 0
@@ -71,16 +71,16 @@ const generateIndexReactPage = (pages) => {
       {
         path: "/",
         element:
-          <Layout>
+          <LayoutDrawer>
             <${countPage[index]} />
-          </Layout>
+          </LayoutDrawer>
       },
       {
         path: "/${path}",
         element:
-          <Layout>
+          <LayoutDrawer>
             <${countPage[index]} />
-          </Layout>
+          </LayoutDrawer>
       },
       `;
     } else {
@@ -88,9 +88,9 @@ const generateIndexReactPage = (pages) => {
       {
         path: "/${path}",
         element:
-          <Layout>
+          <LayoutDrawer>
             <${countPage[index]} />
-          </Layout>
+          </LayoutDrawer>
       },
       `;
     }
