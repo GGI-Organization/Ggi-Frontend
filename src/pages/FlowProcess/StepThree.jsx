@@ -23,10 +23,6 @@ const StepThree = () => {
   const [showNameRequest, setShowNameRequest] = useState(false)
   const [showLoading, setShowLoading] = useState(false)
 
-  const generateCodeZip = () => {
-    generateReactZip(data.mockups)
-  }
-
   const handleChange = (event) => {
     setTec(event.target.value);
   };
@@ -48,11 +44,15 @@ const StepThree = () => {
 
   const getProjectZip = () => {
     switch (tec) {
+      default:
       case technologies.REACT:
-        generateCodeZip()
+        generateReactZip(data.mockups)
         break;
       case technologies.VUE:
-        generateVueZip()
+        generateVueZip(data.mockups)
+        break;
+      case technologies.ANGULAR:
+        generateAngularZip(data.mockups)
         break;
     }
   }
@@ -91,7 +91,7 @@ const StepThree = () => {
             inputProps={{ 'aria-label': 'A' }}
           />
         </Stack>
-        {/* <Stack alignItems='center'>
+        <Stack alignItems='center'>
           <img src="../assets/angular.png" width={100} height={100} />
           <Radio
             checked={tec === technologies.ANGULAR}
@@ -100,7 +100,7 @@ const StepThree = () => {
             name="radio-buttons"
             inputProps={{ 'aria-label': 'A' }}
           />
-        </Stack> */}
+        </Stack>
         <Stack alignItems='center'>
           <img src="../assets/vue.png" width={100} height={100} />
           <Radio
