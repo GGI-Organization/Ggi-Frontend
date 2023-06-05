@@ -509,7 +509,7 @@ const generateAngularRouting = (pages) => {
     if (index == 0) {
       mainApp += `
       { path: '${path}', component: ${countPage[index]}Component },
-      { path: '**', redirectTo: '${path}'},      
+      { path: '', redirectTo: '${path}'},      
       `;
     } else {
       mainApp += `
@@ -566,6 +566,7 @@ const generateAngularMainHTML = (pages) => {
 
   </mat-sidenav-container>
   `
+  return main
 }
 // Step three
 // Create pages angular
@@ -737,14 +738,14 @@ const getAngularComponent = (mockup, index) => {
 
     @Component({
       selector: 'app-page2',
-      templateUrl: './page2.component.html',
+      templateUrl: './${countPage[index]}.component.html',
       styleUrls: ['../layout.component.css']
     })
     export class ${countPage[index]}Component {
     }
     `
   }
-
+  return page
 }
 
 const generateAngularPagesFromMockups = (zip, pages) => {
