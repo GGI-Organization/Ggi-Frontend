@@ -65,7 +65,7 @@ const generateIndexReactPage = (pages) => {
 
   index = 0
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
     if (index == 0) {
       mainApp += `
       {
@@ -192,7 +192,7 @@ const generateReactAllPages = (pages) => {
 const createRouteReactFile = (pages) => {
   let routerFile = `export const routes = [`
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
     routerFile += `
     {
       path: "/${path}",
@@ -265,7 +265,7 @@ const generateIndexVuePage = (pages) => {
 
   index = 0
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
     if (index == 0) {
       mainApp += `
       {
@@ -416,7 +416,7 @@ export default {
       menuItems: [
         `
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
     app += `
             {
               route: "/${path}",
@@ -505,11 +505,11 @@ const generateAngularRouting = (pages) => {
 
   index = 0
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
     if (index == 0) {
       mainApp += `
       { path: '${path}', component: ${countPage[index]}Component },
-      { path: '', redirectTo: '${path}'},      
+      { path: '*', redirectTo: '${path}'},      
       `;
     } else {
       mainApp += `
@@ -547,7 +547,7 @@ const generateAngularMainHTML = (pages) => {
 
   let index = 0
   for (const page of pages) {
-    const path = page.task.task.trim().toLowerCase().replace(' ', '-');
+    const path = page.task.task.trim().toLowerCase().replaceAll(' ', '-');
 
     main += `
     <mat-list-item routerLink="${path}">
@@ -696,6 +696,7 @@ const getAngularHTML = (page) => {
 }
 const getAngularComponent = (mockup, index) => {
   let page = ``
+  let indexSelector = index + 1
   let components = mockup.components
   if (components.some(e => e.type === typeCom.TABLE)) {
     page =
@@ -722,7 +723,7 @@ const getAngularComponent = (mockup, index) => {
     ];
 
     @Component({
-      selector: 'app-page${index++}',
+      selector: 'app-page${indexSelector}',
       templateUrl: './${countPage[index]}.component.html',
       styleUrls: ['../layout.component.css'],
     })
